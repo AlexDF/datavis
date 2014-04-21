@@ -60,7 +60,7 @@ db.once('open', function callback() {
 
 
 app.get( '/', function(req, res) {
-  res.send(records);
+  res.render('index.ejs');
 });
 
 app.listen(3000);
