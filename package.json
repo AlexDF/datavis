@@ -1,0 +1,20 @@
+{
+  "name": "hw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "ejs": "*",
+    "fs": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "body-parser": "*",
+    "csv": "*"
+  },
+  "author": "Alexandre DeFreitas",
+  "license": "BSD-2-Clause"
+}
