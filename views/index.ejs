@@ -5,6 +5,15 @@
 </head>
 
 <body>
-  <h1>hello</h1>
+  <h1>School Directory</h1>
+  
+  <form method="post" action="/findschool">
+    <label for="school_name">What school are you looking for?</label><br><br>
+    <input type="text" placeholder='ex. "Kearny High School"' name="school_name" value="" id="school_name">
+  
+    <input type="Submit" value="Search">
+  </form>
+
+  <div id="output"><p><%= result %></p></div>
 </body>
 </html>

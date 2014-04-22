@@ -4,8 +4,10 @@ var fs = require('fs');
 var csv = require('csv');
 var records = new Array();
 var output = "";
+var bodyParser = require('body-parser');
 
 app = express();
+app.use(bodyParser());
 
 csv(records)
   .from.stream(fs.createReadStream('data' + '/directory.csv'), {
@@ -60,7 +62,37 @@ db.once('open', function callback() {
 
 
 app.get( '/', function(req, res) {
-  res.render('index.ejs');
+  res.render('index.ejs', {result: ''});
+});
+
+app.post('/findschool', function(req, res) {
+  mongoose.connect('mongodb://localhost/directory/');
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function callback() {
+   /* var schoolSchema = mongoose.Schema({
+      countyName: String,
+      schoolName: String,
+      address: String,
+      city: String,
+      state: String,
+      zip: String,
+      phone: String
+    });*/
+
+
+    //var schools = mongoose.model('schools', schoolSchema);
+ 
+    var match = db.schools.find( {schoolName: req.body.school_name} );
+
+    res.render('index.ejs', {result: match.length});
+  });
+  //res.render('index.ejs', {result: match});
 });
 
 app.listen(3000);
+
+
+
+
+
