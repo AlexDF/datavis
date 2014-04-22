@@ -9,7 +9,7 @@
   "dependencies": {
     "express": "*",
     "ejs": "*",
-    "fs": "*",
+    "jquery": "*",
     "mongodb": "*",
     "mongoose": "*",
     "body-parser": "*",
