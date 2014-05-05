@@ -1,18 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+  <link rel="stylesheet" type="text/css" href="../css/nv.d3.css">
+  <script type="text/javascript" src="js/lib/d3.min.js"></script>
+  <script type="text/javascript" src="../js/lib/nv.d3.min.js"></script>
 </head>
 
 <body>
   
-  <div id='chart' class='span4'>
-    
+  <div id="chart" class="span4">
+    <svg style="height:500px;width:400px"></svg>
   </div>
 
   <script>
     var stats = new Array(<%= ratings %>);
-    document.write(stats[0]);
+    //document.write(stats);
+
+
+    //Regular pie chart example
+	nv.addGraph(function() {
+	  var chart = nv.models.pieChart()
+	      .x(function(d) { return d.label })
+	      .y(function(d) { return d.value })
+	      .showLabels(true);
+
+	    d3.select("#chart svg")
+		.datum(exampleData())
+		.transition().duration(350)
+		.call(chart);
+
+	  return chart;
+	});
+
+
+
+    //Pie chart example data. Note how there is only a single array of key-value pairs.
+	function exampleData() {
+	  return  [
+	      { 
+		"label": "1/10",
+		"value" : parseInt(stats[0])
+	      } , 
+	      { 
+		"label": "2/10",
+		"value" : parseInt(stats[1])
+	      } , 
+	      { 
+		"label": "3/10",
+		"value" : parseInt(stats[2])
+	      } , 
+	      { 
+		"label": "4/10",
+		"value" : parseInt(stats[3])
+	      } , 
+	      { 
+		"label": "5/10",
+		"value" : parseInt(stats[4])
+	      } , 
+	      { 
+		"label": "6/10",
+		"value" : parseInt(stats[5])
+	      } , 
+	      { 
+		"label": "7/10",
+		"value" : parseInt(stats[6])
+	      } , 
+	      { 
+		"label": "8/10",
+		"value" : parseInt(stats[7])
+	      } , 
+	      { 
+		"label": "9/10",
+		"value" : parseInt(stats[8])
+	      } , 
+	      { 
+		"label": "10/10",
+		"value" : parseInt(stats[9])
+	      }
+              
+	    ];
+	}
   </script>
   
 </body>
