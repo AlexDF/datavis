@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript" src="js/lib/jquery-1.11.0.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="../css/nv.d3.css">
   <script type="text/javascript" src="js/lib/d3.min.js"></script>
   <script type="text/javascript" src="../js/lib/nv.d3.min.js"></script>
 </head>
 
 <body>
-  <div class="span9">
+  <div class="span9" >
     <div id="chart" class="span4" style="float:left">
       <svg style="height:500px;width:400px"></svg>
     </div>
 
-    <div id="chart2" class="span4" style="float:left">
+    <div id="chart2" class="span4" style="float:left;">
       <svg style="height:500px;width:400px"></svg>
     </div>
   </div>
 
+  <div class="span9" >
+  <div id="chart3" class="span4" style="float:left; clear:left;">
+    <svg style='height:500px;width:600px;'></svg>
+  </div>
+
+  <div id="chart4" class="span4" style="float:left">
+    <svg style='height:500px;width:600px;'></svg>
+  </div>
+  </div>
+
+  <!--<div class="span9">
+  
+  </div>-->
+
   <script>
     var stats = new Array(<%= ratings %>);
-    //document.write(stats);
+    
 
 
     //Regular pie chart example
@@ -61,6 +77,52 @@
 
 
 
+ // Discrete Bar Chart
+nv.addGraph(function() {
+  var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })    //Specify the data accessors.
+      .y(function(d) { return d.value })
+      .staggerLabels(true)    //Too many bars and not enough room? Try staggering labels.
+      .tooltips(false)        //Don't show tooltips
+      .showValues(true)       //...instead, show the bar value right on top of each bar.
+      .transitionDuration(350)
+      ;
+
+  d3.select('#chart3 svg')
+      .datum(exampleData2())
+      .call(chart);
+
+  nv.utils.windowResize(chart.update);
+
+  return chart;
+});
+
+
+// Horizontal Bar Chart
+nv.addGraph(function() {
+    var chart = nv.models.multiBarHorizontalChart()
+        .x(function(d) { return d.label })
+        .y(function(d) { return d.value })
+        .margin({top: 30, right: 20, bottom: 50, left: 175})
+        .showValues(true)           //Show bar value next to each bar.
+        .tooltips(true)             //Show tooltips on hover.
+        .transitionDuration(350)
+        .showControls(true);        //Allow user to switch between "Grouped" and "Stacked" mode.
+
+    chart.yAxis
+        .tickFormat(d3.format(',.2f'));
+
+    d3.select('#chart4 svg')
+        .datum(exampleData2())
+        .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+
+
     //Pie chart example data. Note how there is only a single array of key-value pairs.
 	function exampleData() {
 	  return  [
@@ -95,7 +157,7 @@
 	      { 
 		"label": "8/10",
 		"value" : parseInt(stats[7])
-	      } , 
+	      }, 
 	      { 
 		"label": "9/10",
 		"value" : parseInt(stats[8])
@@ -107,6 +169,62 @@
               
 	    ];
 	}
+
+
+
+
+
+  // Discreet Bar Chart Data
+function exampleData2() {
+ return  [ 
+    {
+      key: "Cumulative Return",
+      values: [
+        { 
+          "label" : "1/10" ,
+          "value" : parseInt(stats[0])
+        } , 
+        { 
+          "label" : "2/10" , 
+          "value" : parseInt(stats[1])
+        } , 
+        { 
+          "label" : "3/10" , 
+          "value" : parseInt(stats[2])
+        } , 
+        { 
+          "label" : "4/10" , 
+          "value" : parseInt(stats[3])
+        } , 
+        { 
+          "label" : "5/10" ,
+          "value" : parseInt(stats[4])
+        } , 
+        { 
+          "label" : "6/10" , 
+          "value" : parseInt(stats[5])
+        } , 
+        { 
+          "label" : "7/10" , 
+          "value" : parseInt(stats[6])
+        } , 
+        { 
+          "label" : "8/10" , 
+          "value" : parseInt(stats[7])
+        }, 
+        { 
+          "label" : "9/10" , 
+          "value" : parseInt(stats[8])
+        }, 
+        { 
+          "label" : "10/10" , 
+          "value" : parseInt(stats[9])
+        }
+      ]
+    }
+  ]
+
+}
   </script>
   
 </body>
