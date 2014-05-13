@@ -1,0 +1,19 @@
+h1, h2, h3, h4, #myname{
+  text-align:center;
+  font-family:'Open Sans', sans-serif;
+}
+
+#intro{
+  width:90%;
+  margin:0 auto 0 auto;
+  font-family:'Open Sans', sans-serif;
+}
+
+.wrapper, .wrapper2{
+  width:800px;
+  margin:0 auto 0 auto;
+}
+
+.wrapper2{
+  width:1000px;
+}

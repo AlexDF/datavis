@@ -1,37 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>School Report Card</title>
   <script type="text/javascript" src="js/lib/jquery-1.11.0.min.js"></script>
-
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="../css/nv.d3.css">
+  
   <script type="text/javascript" src="js/lib/d3.min.js"></script>
   <script type="text/javascript" src="../js/lib/nv.d3.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 <body>
-  <div class="span9" >
-    <div id="chart" class="span4" style="float:left">
-      <svg style="height:500px;width:400px"></svg>
-    </div>
-
-    <div id="chart2" class="span4" style="float:left;">
-      <svg style="height:500px;width:400px"></svg>
-    </div>
-  </div>
-
-  <div class="span9" >
-  <div id="chart3" class="span4" style="float:left; clear:left;">
-    <svg style='height:500px;width:600px;'></svg>
-  </div>
-
-  <div id="chart4" class="span4" style="float:left">
-    <svg style='height:500px;width:600px;'></svg>
-  </div>
-  </div>
-
-  <!--<div class="span9">
+  <h1>Kearny/Newark Public Schools<br>Report Card 2014</h1>
+  <h4>Based on a sample of 48 schools near my home in Kearny and near NJIT in Newark, NJ.</h4>
+  <p id="myname">By: Alexandre DeFreitas</p>
+  <hr>
   
-  </div>-->
+  <br>
+  <div id="intro">
+    <p>Ratings data were obtained from <a href="http://www.greatschools.org">www.greatschools.org</a>.<br></p>
+    <p>Rating Scale (Out of 10 points):</p>
+    <ul>
+      <li>1-3: &nbsp; Below Average</li>
+      <li>4-7: &nbsp; Average</li>
+      <li>8-10: &nbsp; Above Average</li>
+    </ul><br>
+
+   <h3>Summary</h3>
+   <p id="summary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Based on the below results, it can be seen that 
+      the overall quality of the Kearny and
+      Newark Public School systems as well as the performance of students are appallingly low. 
+      Newark, especially, is responsible for the lowest scores. All of the '1 out of 10' and
+      '2 out of 10' scores belong to Newark schools, with very few scoring higher than this. 
+      Before we start attacking only the teachers and administration, however, it is important
+      to keep in mind that the students themselves and especially the parents had a big share in 
+      making these numbers be what they are, since they are based on the students' academic performance.   
+      That being said, the power of great teachers is 
+      immeasurable and the quality of the teachers and the school curriculums themselves need to be 
+      vetted and revamped as much as is needed.
+    </p>   
+  </div>
+  <br>
+
+  <h2>Percentages %</h2><br>
+  <div class="wrapper">
+    <div class="span9" >
+      <div id="chart" class="span4" style="float:left">
+        <svg style="height:500px;width:400px"></svg>
+      </div>
+
+      <div id="chart2" class="span4" style="float:left;">
+        <svg style="height:500px;width:400px"></svg>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="clear:both;">Totals</h2><br>
+  <div class="wrapper2">
+    
+    <div class="span9" >
+    <div id="chart3" class="span4" style="float:left; ">
+      <svg style='height:400px;width:400px;'></svg>
+    </div>
+
+    <div id="chart4" class="span4" style="float:left">
+      <svg style='height:400px;width:600px;'></svg>
+    </div>
+    </div>
+  </div>
+
+  <footer></footer>
 
   <script>
     var stats = new Array(<%= ratings %>);

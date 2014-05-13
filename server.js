@@ -110,7 +110,7 @@ app.post('/findschool', function(req, res) {
 
 
 
-app.get('/getstats', function(req, res) {
+app.get('/', function(req, res) {
     School.find(function(err, school) {
       if(err) {console.log('Error: ' + err);}
       else{
@@ -166,7 +166,9 @@ app.get('/getstats', function(req, res) {
 
 
 
-
+app.get("/js/lib/jquery-1.11.0.min.js", function (req, res) {
+    res.sendfile(__dirname + "/js/lib/jquery-1.11.0.min.js");
+});
 app.get("/css/nv.d3.css", function (req, res) {
     res.sendfile(__dirname + "/css/nv.d3.css");
 });
@@ -176,6 +178,10 @@ app.get("/js/lib/d3.min.js", function (req, res) {
 app.get("/js/lib/nv.d3.min.js", function (req, res) {
     res.sendfile(__dirname + "/js/lib/nv.d3.min.js");
 });
+app.get("/css/style.css", function (req, res) {
+    res.sendfile(__dirname + "/css/style.css");
+});
+
 
 app.listen(3000);
 
