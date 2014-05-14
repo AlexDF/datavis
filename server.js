@@ -31,7 +31,7 @@ var schoolSchema = mongoose.Schema({
 
 var School = mongoose.model('School', schoolSchema);
 
-/*csv(records)
+csv(records)
   .from.stream(fs.createReadStream('data' + '/directory.csv'), {
   columns: true
 })
@@ -46,12 +46,12 @@ var School = mongoose.model('School', schoolSchema);
 // Now that we have our records, it is not needed anymore, 
 // but I'll leave it here for now.
 
-mongoose.connect('mongodb://localhost/directory');
-var db = mongoose.connection;
+//mongoose.connect('mongodb://localhost/directory');
+//var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
   // defining schema
-  var schoolSchema = mongoose.Schema({
+  /*var schoolSchema = mongoose.Schema({
       countyName: String,
       schoolName: String,
       address: String,
@@ -63,7 +63,7 @@ db.once('open', function callback() {
     });
 
   // defining model
-  var School = mongoose.model('School', schoolSchema);
+  var School = mongoose.model('School', schoolSchema);*/
   var item;  
 
   for(var i = 0; i < records.length; i++) {
@@ -83,8 +83,8 @@ db.once('open', function callback() {
     });
   }
 
-  console.log("Completed!");
-});*/
+  console.log("Data Load Completed!");
+});
 
 
 /*app.get( '/', function(req, res) {
